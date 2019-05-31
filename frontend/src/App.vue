@@ -16,6 +16,7 @@
     </v-toolbar>
 
     <v-content>
+      <p>Hello Fools!!!!!</p>
       <HelloWorld/>
     </v-content>
   </v-app>
