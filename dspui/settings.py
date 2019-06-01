@@ -55,7 +55,7 @@ MIDDLEWARE = [
 
 WEBPACK_LOADER = {
     'DEFAULT': {
-        'CACHE': DEBUG,
+        'CACHE': not DEBUG,
         'BUNDLE_DIR_NAME': '/bundles/', 
         'STATS_FILE': os.path.join(FRONTEND_DIR, 'webpack-stats.json'),
 
