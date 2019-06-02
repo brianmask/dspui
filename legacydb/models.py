@@ -7,29 +7,7 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
-class DarkStarDBRouter(object):
-    def db_for_read(self, model, **hints):
-        if model._meta.app_label == 'dspdb':
-            return 'dspdb'
-        return None
 
-    def db_for_write(self, model, **hints):
-        if model._meta.app_label == 'dspdb':
-            return 'dspdb'
-        return None
-
-    def allow_relation(self, obj1, obj2, **hints):
-        if obj1._meta.app_label == 'dspdb' or \
-            obj2._meta.app_label == 'dspdb':
-            return True
-        return None
-
-    def allow_migrate(self, db, app_label, model_name=None, **hints):
-        if app_label == 'dspdb':
-            return db == 'dspdb'
-        return None
-
-        
 class Abilities(models.Model):
     abilityid = models.PositiveSmallIntegerField(db_column='abilityId', primary_key=True)  # Field name made lowercase.
     name = models.TextField(blank=True, null=True)
@@ -114,7 +92,7 @@ class AccountsBanned(models.Model):
 
 
 class AccountsParties(models.Model):
-    charid = models.OneToOneField('AccountsSessions', models.DO_NOTHING, db_column='charid', primary_key=True)
+    charid = models.ForeignKey('AccountsSessions', models.DO_NOTHING, db_column='charid', primary_key=True)
     partyid = models.PositiveIntegerField()
     partyflag = models.PositiveSmallIntegerField()
     allianceid = models.PositiveIntegerField()

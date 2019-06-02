@@ -39,8 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
     'rest_framework',
-    'webpack_loader'
+    'webpack_loader',
+    'dspdb',
+    'api'
 ]
 
 MIDDLEWARE = [
@@ -93,9 +96,17 @@ DATABASES = {
         'USER': 'dspdb',
         'PASSWORD': 'dspdb',
         'HOST': 'localhost'
+    },
+    'dspdb': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'dspdb',
+        'USER': 'dspdb',
+        'PASSWORD': 'dspdb',
+        'HOST': 'localhost'
     }
 }
 
+DATABASE_ROUTERS = ['dspdb.models.DarkStarDBRouter', ]
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -115,6 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'users.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
