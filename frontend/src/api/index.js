@@ -7,7 +7,8 @@ if (token) {
     Axios.defaults.headers.common['Authorization'] = token
 }
 
-const API_URL = 'http://localhost:8000/api'
+// const API_URL = 'http://localhost:8000/api'
+const API_URL = '/api'
 const GET_STORY = `${API_URL}/story/`
 
 
