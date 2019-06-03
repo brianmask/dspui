@@ -4,7 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 import WelcomeImage from '@/components/nav/WelcomeImage'
-import SetupClient from '@/components/setup/SetupClient'
+import StoryBoard from '@/components/story/StoryBoard'
 
 export default new Router({
   routes: [
@@ -13,9 +13,10 @@ export default new Router({
       component: WelcomeImage
     },
     {
-      path: '/setup',
-      name: 'setup',
-      component: SetupClient
+      path: '/story/:id/',
+      name: 'story',
+      component: StoryBoard,
+      props: true
     }
   ]
 })

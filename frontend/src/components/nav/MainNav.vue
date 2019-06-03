@@ -14,16 +14,20 @@
           <v-list-tile-content>
             <v-list-tile-title>Home</v-list-tile-title>
           </v-list-tile-content>
-        </v-list-tile> 
-        <v-list-tile @click="openSetup()">
-          <v-list-tile-action>
-            <v-icon>settings</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Client Setup</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>   
-      </v-list>
+        </v-list-tile>
+        <div v-if="navItems !== undefined">
+        <template v-for="(item, index) in navItems">
+          <v-list-tile @click="openStory(item.id)" :key="index">
+            <v-list-tile-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>{{ item.name }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>         
+        </template> 
+        </div>        
+      </v-list>  
     </v-navigation-drawer>
     <v-toolbar app fixed clipped-left>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
@@ -33,19 +37,28 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+
   export default {
     data: () => ({
       drawer: null
     }),
-    props: {
-      source: String
+    computed: {
+      ...mapState ({
+        navItems: 'stories'
+      })
     },
     methods: {
       openHome () {
         this.$router.push('/')
       },
-      openSetup () {
-        this.$router.push({ name: 'setup' })
+      openStory (id) {
+        this.$router.push({ name: 'story', params: { id: id } })
+      }
+    },
+    beforeMount: function () {
+      if (this.navItems === undefined) {
+        this.$store.dispatch('loadStories')
       }
     }
   }

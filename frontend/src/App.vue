@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire" dark>
+  <v-app id="inspire" class="font-weight-light" dark>
     <main-nav></main-nav>
     <v-content>
       <v-container>        
@@ -7,7 +7,7 @@
       </v-container>
     </v-content>
     <v-footer app fixed>
-      <span>&copy; 2019</span>
+      <span>&copy; www.brianmask.com - 2019</span>
     </v-footer>
   </v-app>
 </template>

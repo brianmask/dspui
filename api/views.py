@@ -1,5 +1,7 @@
 from rest_framework import viewsets
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
 from django.shortcuts import get_object_or_404
 
 from api.models import (
@@ -11,6 +13,8 @@ from api.serializers import (
 )
 
 class DSPStoryBoard(viewsets.ViewSet):
+    permission_classes = (IsAuthenticatedOrReadOnly, )
+
     def list(self, request):
         queryset = Story.objects.filter(is_story=True)
         serializer = DSPStorySerializer(queryset, many=True)
