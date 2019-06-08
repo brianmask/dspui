@@ -17,8 +17,10 @@
           v-for="(item, index) in TableOfContents"
           :key="item.text"
         >
-          <v-card>
-            <v-card-text><vue-markdown>{{ item.text }}</vue-markdown></v-card-text>
+          <v-card height="79vh">
+            <v-card-text height="79vh">
+              <vue-markdown>{{ item.text }}</vue-markdown>
+            </v-card-text>
           </v-card>
         </v-tab-item>
       </v-tabs>  
@@ -61,8 +63,10 @@
     watch: {
       id: function (newValue) {
         if (newValue !== undefined) {
-          this.active = 0
           this.$store.dispatch('loadStory', { id: newValue })
+            .then(() => {
+              this.active = 0
+            })
         }
       }
     },
@@ -73,3 +77,7 @@
     }
   }
 </script>
+
+<style scoped>
+
+</style>
