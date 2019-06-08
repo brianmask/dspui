@@ -163,3 +163,8 @@ STATICFILES_DIRS = (
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'public')
+
+# Location of the .md files which make up the initial 
+# nav / destination menu
+
+NAVIGATION_ROOT = os.path.join(FRONTEND_DIR, 'src', 'assets', 'markdown')

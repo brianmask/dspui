@@ -79,12 +79,14 @@
             {{ eco.text }}
           </a>
         </v-layout>
+        <p>{{text}}</p>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
+// import Doc from '@/assets/markdown/1_Client_Setup/1_Installing_FFXI.md'
   export default {
     data: () => ({
       ecosystem: [
@@ -137,8 +139,13 @@
           href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions'
         }
 
-      ]
-    })
+      ],
+      text: undefined
+    }),
+    beforeMount () {
+      // let text = Doc
+      // this.text = text
+    }
   }
 </script>
 

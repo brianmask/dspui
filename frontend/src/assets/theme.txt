@@ -1,0 +1,21 @@
+import colors from 'vuetify/es5/util/colors'
+
+let theme: {
+    primary: colors.blue-grey.base,
+    secondary: colors.teal.base,
+    accent: colors.green.base,
+    error: colors.red.base,
+    warning: colors.orange.base,
+    info: colors.cyan.base,
+    success: colors.indigo.base
+}
+
+    {
+    primary: #607d8b,
+    secondary: #009688,
+    accent: #4caf50,
+    error: #f44336,
+    warning: #ff9800,
+    info: #00bcd4,
+    success: #3f51b5
+    }

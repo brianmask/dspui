@@ -1,4 +1,6 @@
 const BundleTracker = require("webpack-bundle-tracker");
+const MarkdownIt = require('markdown-it')
+const md = new MarkdownIt()
 
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production'
@@ -16,8 +18,7 @@ module.exports = {
             .use(BundleTracker, [{filename: '../frontend/webpack-stats.json'}])
 
         config.resolve.alias
-            .set('__STATIC__', 'static')
-            
+            .set('__STATIC__', 'static')            
 
         config.devServer
             .public('http://0.0.0.0:8080')
@@ -27,5 +28,6 @@ module.exports = {
             .watchOptions({poll: 1000})
             .https(false)
             .headers({"Access-Control-Allow-Origin": ["*"]})
+
     }
 }
