@@ -5,24 +5,24 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from django.shortcuts import get_object_or_404
 
 from api.models import (
-    Story, #StoryBoard
+    NavigationMenu,
 )
 
 from api.serializers import (
-    DSPStorySerializer, DSPStoryDetailSerializer
+    DSPNavigationSerializer, DSPTabSerializer
 )
 
-class DSPStoryBoard(viewsets.ViewSet):
+class DSPNavigationBuilder(viewsets.ViewSet):
     permission_classes = (IsAuthenticatedOrReadOnly, )
 
     def list(self, request):
-        queryset = Story.objects.filter(is_story=True)
-        serializer = DSPStorySerializer(queryset, many=True)
+        queryset = NavigationMenu.objects.filter(is_story=True)
+        serializer = DSPNavigationSerializer(queryset, many=True)
         return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
-        queryset = Story.objects.filter(is_story=True)
+        queryset = NavigationMenu.objects.filter(is_story=True)
         story = get_object_or_404(queryset, pk=pk)
-        serializer = DSPStoryDetailSerializer(story)
+        serializer = DSPTabSerializer(story)
         return Response(serializer.data)
         

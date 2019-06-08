@@ -3,8 +3,8 @@ from django.contrib import admin
 # Register your models here.
 
 from api.models import (
-    Story, StoryBoard
+    NavigationMenu, NavigationTab
 )
 
-admin.site.register(Story)
-admin.site.register(StoryBoard)
+admin.site.register(NavigationMenu)
+admin.site.register(NavigationTab)

@@ -4,20 +4,20 @@
 from rest_framework import serializers
 
 from api.models import (
-    Story, StoryBoard
+    NavigationMenu, NavigationTab
 )
 
-class DSPStorySerializer(serializers.ModelSerializer):
+class DSPNavigationSerializer(serializers.ModelSerializer):
     """
-    DSPStorySerializer - Serializer for Story Generation (Nav Items)
+    DSPNavigationSerializer - Serializer for Story Generation (Nav Items)
     Arguments:
         serializers {queryset} -- the default queryset to use
     """
     class Meta:
-        model = Story
+        model = NavigationMenu
         fields = ('id', 'name', 'position', 'icon')
 
-class DSPStoryPartsSerializer(serializers.ModelSerializer):
+class DSPTabPartsSerializer(serializers.ModelSerializer):
     """
     DSPStoryPartsSerializer - Serializer for Story parts (Tab Generation)
 
@@ -25,18 +25,18 @@ class DSPStoryPartsSerializer(serializers.ModelSerializer):
         serializers {queryset} -- the default queryset to use
     """
     class Meta:
-        model = StoryBoard
+        model = NavigationTab
         fields = ('id', 'name', 'position', 'text')
 
-class DSPStoryDetailSerializer(serializers.ModelSerializer):
+class DSPTabSerializer(serializers.ModelSerializer):
     """
     DSPStoryDetailSerializer - Serializer for Story Detail
 
     Arguments:
         serializers {queryset} -- the default queryset to use
     """
-    story = DSPStoryPartsSerializer(many=True)
+    menu = DSPTabPartsSerializer(many=True)
 
     class Meta:
-        model = Story
-        fields = ('id', 'name', 'story')
+        model = NavigationMenu
+        fields = ('id', 'name', 'menu')

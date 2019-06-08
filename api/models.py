@@ -5,7 +5,7 @@ from django.db import models
 
 # Create your models here.
 
-class Story(models.Model):
+class NavigationMenu(models.Model):
     """
     Story - model to house stories which will be the navigation
             links for the un-authenticated user base
@@ -20,21 +20,20 @@ class Story(models.Model):
 
     class Meta:
         ordering = ['position']
-        verbose_name_plural = 'Stories'
 
-class StoryBoard(models.Model):
+class NavigationTab(models.Model):
     """
     StoryBoard - model to house the pieces making up the entire
                  story for navigation.
     """
-    story = models.ForeignKey(Story, on_delete=models.CASCADE, related_name='story')
+    menu = models.ForeignKey(NavigationMenu, on_delete=models.CASCADE, related_name='menu')
     position = models.FloatField()
     name = models.CharField(max_length=65)
     text = models.TextField()
 
     def __str__(self):
-        return '%s - %s' % (self.story.name, self.name)
+        return '%s - %s' % (self.menu.name, self.name)
 
     class Meta:
-        ordering = ['position']
+        ordering = ['menu__name', 'position']
         
