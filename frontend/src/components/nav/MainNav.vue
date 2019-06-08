@@ -53,7 +53,7 @@
         this.$router.push('/')
       },
       openStory (id) {
-        this.$router.push({ name: 'story', params: { id: id } })
+        this.$router.push({ name: 'setup', params: { id: id } })
       }
     },
     beforeMount: function () {
